@@ -1915,10 +1915,16 @@ def get_itemprops(request, path_parts, rev):
   return props
 
 def get_itemprops2(request, path_parts, rev):
-  readme = request.repos.itemreadme(path_parts,rev)
+  try:
+    readme = request.repos.itemreadme(path_parts,rev)
+  except Exception:
+    return None
   parser = CommonMark.DocParser()
   renderer = CommonMark.HTMLRenderer()
-  ast = parser.parse(readme)
+  try: 
+    ast = parser.parse(readme)
+  except Exception:
+    return None
   htmlreadme = renderer.render(ast)
   return htmlreadme
 

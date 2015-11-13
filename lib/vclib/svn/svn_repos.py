@@ -545,7 +545,7 @@ class LocalSubversionRepository(vclib.Repository):
     try:
       contenido = fs.file_contents(fsroot, path + '/Readme.md')
     except Exception:
-      return None
+      return None 
     texto = ""
     while 1:
       # int() waiting for proper fix http://trac.edgewall.org/ticket/10722
