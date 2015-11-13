@@ -1,0 +1,6 @@
+[if-any properties2]
+<hr/>
+<div class="vc_properties">
+<h2>Readme Wiki</h2>
+[properties2]
+[end]
