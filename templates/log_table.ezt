@@ -1,7 +1,7 @@
 [include "include/log_header.ezt"]
 
 <hr />
-<table cellspacing="1" cellpadding="2">
+<table cellspacing="1" cellpadding="2" >
 <thead>
 <tr>
   <th class="vc_header[is logsort "rev"]_sort[end]">Revision</th>

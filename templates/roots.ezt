@@ -5,7 +5,7 @@
 
 [include "include/header.ezt" "directory"]
 
-<table cellspacing="1" cellpadding="2">
+<table cellspacing="1" cellpadding="2" class="files">
 <thead>
 <tr>
   <th class="vc_header_sort">Name</th>

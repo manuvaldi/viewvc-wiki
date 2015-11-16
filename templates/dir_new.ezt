@@ -39,7 +39,7 @@
     <td style="width: 200px">
       <a href="[up_href]">
       <img src="[docroot]/images/back_small.png" alt="" class="vc_icon"
-      />&nbsp;Parent&nbsp;Directory</a>
+      />&nbsp;..</a>
     </td>
     <td style="width: 96px; font-size: 0;"></td>
     <td>&nbsp;</td>

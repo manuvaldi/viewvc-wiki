@@ -1,0 +1,16 @@
+[if-any readme]
+<!-- <hr/> -->
+<div class="vc_readme">
+<!-- <div id="readme" class="boxed-group flush clearfix announce instapaper_body "> -->
+<div id="readme" >
+    <h3 class="readme-title" >
+      <span class="octicon octicon-book"><img src="[docroot]/images/text.png" alt="Readme"/></span>
+      README
+    </h3>
+
+    <div class="plain readme-content">
+    [readme]
+    </div>
+  </div>
+
+[end]

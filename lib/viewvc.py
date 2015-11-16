@@ -1914,7 +1914,7 @@ def get_itemprops(request, path_parts, rev):
     props.append(_item(name=name, value=value, undisplayable=undisplayable))
   return props
 
-def get_itemprops2(request, path_parts, rev):
+def get_itemreadme(request, path_parts, rev):
   try:
     readme = request.repos.itemreadme(path_parts,rev)
   except Exception:
@@ -1927,30 +1927,6 @@ def get_itemprops2(request, path_parts, rev):
     return None
   htmlreadme = renderer.render(ast)
   return htmlreadme
-
-def get_itemreadme(request, path_parts, rev):
-  itemprops = request.repos.itemprops(path_parts, rev)
-  propnames = itemprops.keys()
-  propnames.sort()
-  props = []
-  for name in propnames:
-    lf = LogFormatter(request, itemprops[name])
-    value = lf.get(maxlen=0, htmlize=1)
-    undisplayable = ezt.boolean(0)
-    # skip non-utf8 property names
-    try:
-      unicode(name, 'utf8')
-    except:
-      continue
-    # note non-utf8 property values
-    try:
-      unicode(value, 'utf8')
-    except:
-      value = None
-      undisplayable = ezt.boolean(1)
-    props.append(_item(name=name, value=value, undisplayable=undisplayable))
-  props.append(_item(name='hola', value='adios', undisplayable=ezt.boolean(0)))
-  return props
 
 def parse_mime_type(mime_type):
   mime_parts = map(lambda x: x.strip(), string.split(mime_type, ';'))
@@ -2488,7 +2464,7 @@ def view_directory(request):
     'branch_tags': None,
     'plain_tags': None,
     'properties': get_itemprops(request, request.path_parts, request.pathrev),
-    'properties2': get_itemprops2(request, request.path_parts, request.pathrev),
+    'readme': get_itemreadme(request, request.path_parts, request.pathrev),
     'tree_rev' : None,
     'tree_rev_href' : None,
     'dir_paging_action' : None,

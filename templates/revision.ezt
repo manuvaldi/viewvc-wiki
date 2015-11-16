@@ -5,10 +5,10 @@
 
 [include "include/header.ezt" "revision"]
 
-<hr />
+<!-- <hr /> -->
 
 <form method="get" action="[jump_rev_action]">
-<table cellspacing="1" cellpadding="2" style="width: auto;">
+<table cellspacing="1" cellpadding="2" class="files">
   <tr align="left">
     <th>Jump to revision:</th>
     <td>
@@ -41,11 +41,11 @@
 </table>
 </form>
 
-<hr />
+<!-- <hr /> -->
 
 <h2>Changed paths</h2>
 
-<table cellspacing="1" cellpadding="2">
+<table cellspacing="1" cellpadding="2" class="files" >
   <thead>
   <tr align="left">
     <th class="vc_header_sort">Path</th>
