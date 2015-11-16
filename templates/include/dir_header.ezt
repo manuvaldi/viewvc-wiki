@@ -1,5 +1,6 @@
+
 [# setup page definitions]
-  [define page_title]Index of /[where][end]
+  [define page_title]<!--Index of /[where]-->[end]
   [define help_href][docroot]/help_[if-any where]dir[else]root[end]view.html[end]
 [# end]
 
@@ -9,8 +10,16 @@
   <!-- you may insert repository access instructions here -->
 [end]
 
-<table class="auto">
-<tr><td>Files shown:</td><td><strong>[files_shown]</strong>
+<table class="auto revheader">
+<tr>
+[is roottype "svn"]
+  <td class="dirrevision" >Rev:
+  <a href="[tree_rev_href]" title="Revision [tree_rev]">[tree_rev]</a>[if-any youngest_rev] / <a href="[youngest_rev_href]" title="Revision [youngest_rev]">[youngest_rev]</a>[end]</td>
+[end]
+<td class="path" ><strong>[if-any roots_href]  <a href="[roots_href]"><span class="pathdiv">/</span></a>[else]<span class="pathdiv">/</span>[end][if-any nav_path][for nav_path][if-any nav_path.href]<a href="[nav_path.href]">[end]
+[if-index nav_path first][[][nav_path.name]][else][nav_path.name][end][if-any nav_path.href]</a>[end][if-index nav_path last][else]<span class="pathdiv">/</span>[end][end][end]</strong>
+</td>
+	<td class="filesshown" ><img src="[docroot]/images/files.png"  alt="Files shown" class="vc_icon" /> [files_shown] files
 [is num_dead "0"]
 [else]
   [if-any attic_showing]
@@ -19,21 +28,12 @@
     (<a href="[show_attic_href]">Show [num_dead] dead files</a>)
   [end]
 [end]
-</td></tr>
+</td>
 
-[is roottype "svn"]
-<tr>
-  <td>Directory revision:</td>
-  <td><a href="[tree_rev_href]" title="Revision [tree_rev]">[tree_rev]</a>[if-any youngest_rev] (of <a href="[youngest_rev_href]" title="Revision [youngest_rev]">[youngest_rev]</a>)[end]</td>
-</tr>
-[end]
-<tr>
-  <td>Sticky [is roottype "cvs"]Tag[else]Revision[end]:</td>
-  <td>[include "pathrev_form.ezt"]</td>
-</tr>
+  <td class="sticky" >Sticky [is roottype "cvs"]Tag[else]Revision[end]:
+  [include "pathrev_form.ezt"]</td>
 
 [if-any search_re_action]
-<tr>
   <td>Filter files by content:</td>
   <td><form method="get" action="[search_re_action]" style="display: inline;">
       <div style="display: inline;">
